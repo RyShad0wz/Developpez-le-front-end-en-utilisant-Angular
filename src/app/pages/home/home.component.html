@@ -1,8 +1,14 @@
-<div class="home-container">
-    <h1>🏅 Olympic Games Dashboard</h1>
-  
-    <div class="chart-container">
-      <canvas id="medalPieChart"></canvas>
+<div class="stats-container">
+    <div class="stat-box">
+      <h3>Nombre de JO</h3>
+      <p>{{ totalJOs }}</p>
+    </div>
+    <div class="stat-box">
+      <h3>Nombre de pays</h3>
+      <p>{{ olympics.length }}</p>
     </div>
   </div>
+  
+  <canvas id="medalPieChart"></canvas>
+  
   

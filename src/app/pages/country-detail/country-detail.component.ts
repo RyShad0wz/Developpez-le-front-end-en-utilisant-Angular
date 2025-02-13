@@ -1,20 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { OlympicService } from '../../core/services/olympic.service';
-import { Chart, registerables } from 'chart.js';
 import { OlympicCountry } from '../../core/models/Olympic';
-
-Chart.register(...registerables);
 
 @Component({
   selector: 'app-country-detail',
   templateUrl: './country-detail.component.html',
-  styleUrls: ['./country-detail.component.scss'],
+  styleUrls: ['./country-detail.component.scss']
 })
 export class CountryDetailComponent implements OnInit {
-  countryData: OlympicCountry = { id: 0, country: '', participations: [] };
+  countryData: OlympicCountry | null = null;
   totalMedals: number = 0;
-  chart: any;
+  totalAthletes: number = 0;
 
   constructor(
     private route: ActivatedRoute,
@@ -26,50 +23,27 @@ export class CountryDetailComponent implements OnInit {
     const countryId = Number(this.route.snapshot.paramMap.get('id'));
 
     this.olympicService.getOlympics().subscribe((data) => {
-      if (data) {
-        const country = data.find((c) => c.id === countryId);
-        if (country) {
-          this.countryData = country;
+      if (data && Array.isArray(data)) {
+        this.countryData = data.find((country) => country.id === countryId) || null;
+
+        if (this.countryData?.participations) {
           this.totalMedals = this.countryData.participations.reduce(
             (sum, p) => sum + (p.medalsCount || 0),
             0
           );
-          this.createLineChart();
+
+          this.totalAthletes = this.countryData.participations.reduce(
+            (sum, p) => sum + (p.athleteCount || 0),
+            0
+          );
+        } else {
+          this.router.navigate(['/404']);
         }
       }
     });
   }
 
-  createLineChart(): void {
-    if (!this.countryData.participations.length) return;
-
-    const ctx = document.getElementById('medalHistoryChart') as HTMLCanvasElement;
-    const labels = this.countryData.participations.map((p) => p.year);
-    const data = this.countryData.participations.map((p) => p.medalsCount || 0);
-
-    this.chart = new Chart(ctx, {
-      type: 'line',
-      data: {
-        labels,
-        datasets: [
-          {
-            label: 'Médailles par année',
-            data,
-            borderColor: '#0085C7',
-            fill: false,
-          },
-        ],
-      },
-      options: {
-        responsive: true,
-        plugins: {
-          legend: { display: false },
-        },
-      },
-    });
-  }
-
   goBack(): void {
-    this.router.navigate(['/home']);
+    this.router.navigate(['/']);
   }
 }

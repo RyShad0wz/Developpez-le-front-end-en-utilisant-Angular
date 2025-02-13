@@ -1,18 +1,23 @@
-<div class="country-container" *ngIf="countryData?.country">
+<div class="country-container" *ngIf="countryData">
     <h1>{{ countryData?.country }}</h1>
   
-    <p>🏅 Nombre total de participations : {{ countryData?.participations?.length ?? 0 }}</p>
-    <p>🏅 Nombre total de médailles : {{ totalMedals }}</p>
+    <div class="stats-container">
+      <div class="stat-box">
+        <p>Number of entries</p>
+        <h3>{{ countryData?.participations?.length || 0 }}</h3>
+      </div>
+      <div class="stat-box">
+        <p>Total number of medals</p>
+        <h3>{{ totalMedals }}</h3>
+      </div>
+      <div class="stat-box">
+        <p>Total number of athletes</p>
+        <h3>{{ totalAthletes }}</h3>
+      </div>
+    </div>
   
     <canvas id="medalHistoryChart"></canvas>
   
     <button (click)="goBack()">Retour</button>
   </div>
-  
-  <ng-template #noData>
-    <div class="no-data">
-      <p>⚠️ Aucune donnée disponible pour ce pays.</p>
-      <button (click)="goBack()">Retour</button>
-    </div>
-  </ng-template>
   

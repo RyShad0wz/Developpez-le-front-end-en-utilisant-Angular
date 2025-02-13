@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, EMPTY } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { OlympicCountry } from '../models/Olympic';
-import { Participation } from '../models/Participation';
 
 @Injectable({
   providedIn: 'root',
