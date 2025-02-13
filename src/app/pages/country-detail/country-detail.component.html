@@ -3,21 +3,23 @@
   
     <div class="stats-container">
       <div class="stat-box">
-        <p>Number of entries</p>
+        <p>Nombre de participations</p>
         <h3>{{ countryData?.participations?.length || 0 }}</h3>
       </div>
       <div class="stat-box">
-        <p>Total number of medals</p>
+        <p>Nombre total de médailles</p>
         <h3>{{ totalMedals }}</h3>
       </div>
       <div class="stat-box">
-        <p>Total number of athletes</p>
+        <p>Nombre total d'athlètes</p>
         <h3>{{ totalAthletes }}</h3>
       </div>
     </div>
   
-    <canvas id="medalHistoryChart"></canvas>
+    <div class="chart-container">
+      <canvas id="medalHistoryChart"></canvas>
+    </div>
   
-    <button (click)="goBack()">Retour</button>
+    <button (click)="goBack()">Retour à l'accueil</button>
   </div>
   
