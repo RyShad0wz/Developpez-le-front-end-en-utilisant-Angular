@@ -1,17 +1,8 @@
 <div class="home-container">
     <h1>🏅 Olympic Games Dashboard</h1>
   
-    <canvas id="medalPieChart"></canvas>
-  
-    <div class="olympics-grid">
-      <div *ngFor="let olympic of olympics" class="olympic-card">
-        <h2>{{ olympic.country }}</h2>
-        <ul class="medal-list">
-          <li *ngFor="let event of olympic.participations">
-            🏅 {{ event.year }} - {{ event.city }} : {{ event.medalsCount }} médailles
-          </li>
-        </ul>
-      </div>
+    <div class="chart-container">
+      <canvas id="medalPieChart"></canvas>
     </div>
   </div>
   

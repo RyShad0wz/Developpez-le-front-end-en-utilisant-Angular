@@ -1,8 +1,44 @@
-.center {
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+.not-found-container {
+  text-align: center;
+  padding: 50px;
+  font-family: 'Arial', sans-serif;
+  
+  h1 {
+    font-size: 100px;
+    font-weight: bold;
+    color: #ff4a57;
+    animation: bounce 1s infinite alternate;
+  }
+
+  h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+  }
+
+  p {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 20px;
+  }
+
+  .back-button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    background: #ff4a57;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: 0.3s;
+  }
+
+  .back-button:hover {
+    background: #ff1e3a;
+  }
+
+  @keyframes bounce {
+    from { transform: translateY(0); }
+    to { transform: translateY(-10px); }
+  }
 }
