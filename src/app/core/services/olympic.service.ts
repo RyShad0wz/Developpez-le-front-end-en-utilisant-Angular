@@ -11,11 +11,11 @@ import { Participation } from '../models/Participation';
 export class OlympicService {
 
   // Utilisation du fichier JSON local
-  private jsonDataUrl = '/assets/data/olympics.json'; 
+  private jsonDataUrl = 'src\assets\mock\olympic.json'; 
 
   private olympics$ = new BehaviorSubject<OlympicCountry[] | null>(null);
 
-  constructor(private http: HttpClient) {}
+  constructor(private readonly http: HttpClient) {}
 
   /**
    * Charge les données des JO (depuis un fichier JSON)
