@@ -38,7 +38,7 @@ export class OlympicService {
    * Récupère les données des JO sous forme d'observable
    */
 
-    getOlympics(): Observable<any[] | null> {
+    getOlympics(): Observable<OlympicCountry[] | null> {
       return this.olympics$.asObservable();
     }
   }
