@@ -1,12 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { OlympicService } from '../../core/services/olympic.service';
-import { Chart, registerables } from 'chart.js';
-import ChartDataLabels from 'chartjs-plugin-datalabels';
 import { Router } from '@angular/router';
 import { OlympicCountry } from '../../core/models/Olympic';
 import { Participation } from '../../core/models/Participation';
-
-Chart.register(...registerables, ChartDataLabels);
 
 @Component({
   selector: 'app-home',
@@ -15,89 +11,61 @@ Chart.register(...registerables, ChartDataLabels);
 })
 export class HomeComponent implements OnInit {
   olympics: OlympicCountry[] = [];
-  chart: any;
   totalJOs: number = 0;
   totalCountries: number = 0;
+  pieChartData: any[] = [];
+  view: [number, number] = [700, 400]; // ✅ Taille du graphique
+
+  // Options ngx-charts
+  showLegend: boolean = true;
+  showLabels: boolean = true;
+  explodeSlices: boolean = false;
+  doughnut: boolean = false;
+
+  colorScheme = {
+    domain: ['#0085C7', '#F4C300', '#009F3D', '#DF0024', '#000000']
+  };
 
   constructor(private olympicService: OlympicService, private router: Router) {}
 
   ngOnInit(): void {
-    this.olympicService.loadInitialData().subscribe(); // Charger les données
-  
+    this.olympicService.loadInitialData().subscribe();
+
     this.olympicService.getOlympics().subscribe(data => {
-      console.log('📡 Données après récupération:', data);
-  
-      if (data && data.length > 0) {  // Vérifie si un tableau non vide est reçu
+      if (data && data.length > 0) {
         this.olympics = data;
         this.totalJOs = this.calculateTotalJOs();
         this.totalCountries = this.olympics.length;
-        this.createPieChart();
+        this.preparePieChartData();
       } else {
-        console.warn('⚠ Aucune donnée reçue, assignation d’un tableau vide.');
-        this.olympics = []; // Empêche l’erreur
+        console.warn('⚠ Aucune donnée reçue.');
+        this.olympics = [];
       }
     });
   }
-  
-  
 
-  // Fonction pour calculer le nombre total de JOs uniques
+  // Calcul du nombre de JOs uniques
   calculateTotalJOs(): number {
     const years = this.olympics.flatMap((o: OlympicCountry) =>
       o.participations.map((p: Participation) => p.year)
     );
-    return new Set(years).size; // Compter les années uniques
+    return new Set(years).size;
   }
 
-  createPieChart(): void {
-    const ctx = document.getElementById('medalPieChart') as HTMLCanvasElement;
-  
-    if (this.chart) { 
-      this.chart.destroy(); // 🔥 Détruire l'ancien graphique avant d'en créer un nouveau
-    }
-  
-    const labels = this.olympics.map((o: OlympicCountry) => o.country);
-    const data = this.olympics.map((o: OlympicCountry) =>
-      o.participations.reduce((sum: number, p: Participation) => sum + p.medalsCount, 0)
-    );
-  
-    this.chart = new Chart(ctx, {
-      type: 'pie',
-      data: {
-        labels,
-        datasets: [
-          {
-            label: 'Nombre total de médailles',
-            data,
-            backgroundColor: ['#0085C7', '#F4C300', '#009F3D', '#DF0024', '#000000'],
-            hoverOffset: 10
-          }
-        ]
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-          tooltip: {
-            callbacks: {
-              label: function (tooltipItem: any) {
-                return `${labels[tooltipItem.dataIndex]} : ${data[tooltipItem.dataIndex]} médailles`;
-              }
-            }
-          }
-        },
-        layout: {
-          padding: 20
-        },
-        onClick: (event, elements) => {
-          if (elements.length > 0) {
-            const index = elements[0].index;
-            const countryId = this.olympics[index].id;
-            this.router.navigate([`/country/${countryId}`]);
-          }
-        }
-      }
-    });
+  // Préparer les données pour ngx-charts
+  preparePieChartData(): void {
+    this.pieChartData = this.olympics.map((o: OlympicCountry) => ({
+      name: o.country,
+      value: o.participations.reduce((sum: number, p: Participation) => sum + p.medalsCount, 0)
+    }));
   }
-  
+
+  // Gestion du clic sur un élément du Pie Chart
+  onSelect(data: any): void {
+    console.log('Pays sélectionné:', data);
+    const country = this.olympics.find(o => o.country === data.name);
+    if (country) {
+      this.router.navigate([`/country/${country.id}`]);
+    }
+  }
 }

@@ -1,14 +1,22 @@
 <div class="stats-container">
-    <div class="stat-box">
-      <h3>Nombre de JO</h3>
-      <p>{{ totalJOs }}</p>
-    </div>
-    <div class="stat-box">
-      <h3>Nombre de pays</h3>
-      <p>{{ olympics.length }}</p>
-    </div>
+  <div class="stat-box">
+    <h3>Nombre de JO</h3>
+    <p>{{ totalJOs }}</p>
   </div>
-  
-  <canvas id="medalPieChart"></canvas>
-  
-  
+  <div class="stat-box">
+    <h3>Nombre de pays</h3>
+    <p>{{ totalCountries }}</p>
+  </div>
+</div>
+
+<div class="chart-container">
+  <ngx-charts-pie-chart
+    [view]="view"
+    [results]="pieChartData"
+    [legend]="showLegend"
+    [labels]="showLabels"
+    [explodeSlices]="explodeSlices"
+    [doughnut]="doughnut"
+    (select)="onSelect($event)">
+  </ngx-charts-pie-chart>
+</div>
