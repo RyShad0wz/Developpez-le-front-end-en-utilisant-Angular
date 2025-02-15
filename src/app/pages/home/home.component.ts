@@ -87,7 +87,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   updateChartSize(): void {
     const width = window.innerWidth;
     if (width > 1200) {
-      this.view = [700, 500]; // Taille grand écran
+      this.view = [600, 500]; // Taille grand écran
     } else if (width > 768) {
       this.view = [500, 400]; // Tablette
     } else {

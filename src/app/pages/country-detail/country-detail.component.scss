@@ -10,12 +10,33 @@
     font-family: 'Poppins', sans-serif; 
     font-size: 28px;
     font-weight: bold;
-    background-color: #0085C7;
+    background-color: #02228d;
     color: white;
     padding: 10px;
     border-radius: 5px;
     width: 80%;
     text-align: center;
+  }
+  
+  ::ng-deep g.axis-x text,
+  ::ng-deep g.axis-y text {
+    font-family: 'Poppins', sans-serif !important;  
+    font-size: 16px !important;  
+    font-weight: bold !important;  
+    fill: #02228d !important;  
+  }
+  
+  ::ng-deep text.pie-label {
+    font-size: 18px !important; 
+    font-weight: bold !important;
+    fill: #333 !important;
+  }
+  
+  ::ng-deep text {
+    font-family: 'Poppins', sans-serif !important;
+    font-size: 18px !important; 
+    font-weight: bold !important; 
+    fill: #02228d !important;  
   }
 
   .stats-container {
@@ -26,7 +47,7 @@
 
     .stat-box {
       background: white;
-      border: 2px solid #0085C7;
+      border: 2px solid #02228d;
       border-radius: 10px;
       padding: 10px 20px;
       text-align: center;
@@ -34,7 +55,7 @@
 
       p {
         font-family: 'Poppins', sans-serif; 
-        font-size: 14px;
+        font-size: 18px;
         color: gray;
       }
 
@@ -63,7 +84,7 @@
   
 
   button {
-    background-color: #0085C7;
+    background-color: #02228d;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -75,7 +96,7 @@
   }
 
   button:hover {
-    background-color: #0066a5;
+    background-color: #022032;
   }
 
   @media (max-width: 768px) {

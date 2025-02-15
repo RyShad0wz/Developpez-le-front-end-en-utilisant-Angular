@@ -4,16 +4,28 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 20px;
-  background: linear-gradient(to right, #b0aaaa, #b9b5b5);
+  padding: 10px;
+  background: linear-gradient(to right, #a1a0a0, #a0a0a0);
+}
+
+.chart-title-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  max-width: 300px;  
+  margin: 10px auto;  
+  background: linear-gradient(135deg, #0085C7, #004080); // ✅ Dégradé bleu élégant
+  border-radius: 10px;  // ✅ Coins arrondis
+  box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2); // ✅ Ombre légère
 }
 
 .chart-title {
   font-family: 'Poppins', sans-serif; 
   text-align: center;
-  font-size: 24px;
+  font-size: 22px;
   font-weight: bold;
-  margin: 20px 0;
+  color: white;
 }
 
 
@@ -21,7 +33,7 @@
   font-family: 'Roboto', sans-serif; 
   font-size: 28px;
   font-weight: bold;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .stats-container {
@@ -29,29 +41,29 @@
   flex-wrap: wrap; 
   justify-content: center;
   gap: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .stat-box {
-  background: white;
+  background: rgb(255, 253, 253);
   border: 2px solid #0d7377;
-  border-radius: 10px;
-  padding: 15px 25px;
+  border-radius: 8px;
+  padding: 10px 20px;
   text-align: center;
-  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
   min-width: 180px; 
 }
 
 .stat-box h3 {
   font-family: 'Roboto', sans-serif; 
-  font-size: 22px;
+  font-size: 20px;
   font-weight: bold;
 }
 
 .stat-box p {
   font-family: 'Roboto', sans-serif; 
-  font-size: 22px;
-  color: gray;
+  font-size: 21.5px;
+  color: rgb(0, 0, 0);
 }
 
 .chart-container {
@@ -100,6 +112,39 @@ ngx-charts-pie-chart text {
   width: 15px;
   height: 15px;
   border-radius: 50%;
+}
+
+::ng-deep .ngx-charts-tooltip-content {
+  font-family: 'Poppins', sans-serif !important; // ✅ Change la police
+  font-size: 18px !important; // ✅ Agrandit le texte
+  font-weight: bold !important; // ✅ Rend le texte plus épais
+  color: #222 !important; // ✅ Change la couleur du texte
+}
+
+::ng-deep .ngx-charts-tooltip-content .tooltip-label {
+  font-size: 18px !important; // ✅ Taille du nom du pays
+  font-weight: bold !important;
+  color: #0085C7 !important; // ✅ Change la couleur du pays au survol
+}
+
+::ng-deep .ngx-charts-tooltip-content .tooltip-val {
+  font-size: 18px !important; // ✅ Agrandit le nombre de médailles
+  font-weight: bold !important;
+  color: #F4C300 !important; // ✅ Change la couleur du chiffre
+}
+
+::ng-deep .ngx-charts-tooltip-content .tooltip-val::after {
+  content: " 🏅";  // ✅ Ajoute l'emoji de médaille
+  font-size: 20px !important; // ✅ Ajuste la taille de l’emoji
+  margin-left: 5px; // ✅ Ajoute un petit espace avant l'emoji
+}
+
+
+::ng-deep .pie-label {
+  font-size: 18px !important; // Augmente la taille des labels
+  font-weight: bold;
+  font-family: 'Poppins', sans-serif; // Remplace par la police que tu veux
+  fill: #333; // Change la couleur si nécessaire
 }
 
 @media (max-width: 768px) {
