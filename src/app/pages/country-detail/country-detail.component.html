@@ -18,17 +18,18 @@
 
   <div class="chart-container">
     <ngx-charts-line-chart
-      [view]="view"
-      [results]="lineChartData"
-      [legend]="showLegend"
-      [xAxis]="showXAxis"
-      [yAxis]="showYAxis"
-      [showXAxisLabel]="true"
-      [showYAxisLabel]="true"
-      xAxisLabel="Années"
-      yAxisLabel="Médailles"
-      [autoScale]="true">
-    </ngx-charts-line-chart>
+    [view]="view"
+    [results]="lineChartData"
+    [legend]="false" 
+    [xAxis]="showXAxis"
+    [yAxis]="showYAxis"
+    [showXAxisLabel]="true"
+    [showYAxisLabel]="true"
+    xAxisLabel="Années"
+    yAxisLabel="Médailles"
+    [autoScale]="true">
+  </ngx-charts-line-chart>
+  
   </div>
 
   <button (click)="goBack()">Retour à l'accueil</button>

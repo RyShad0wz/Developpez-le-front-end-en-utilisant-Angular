@@ -7,6 +7,7 @@
   background: linear-gradient(to right, #f5f5f5, #e6e6e6);
 
   h1 {
+    font-family: 'Poppins', sans-serif; 
     font-size: 28px;
     font-weight: bold;
     background-color: #0085C7;
@@ -32,11 +33,13 @@
       box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
 
       p {
+        font-family: 'Poppins', sans-serif; 
         font-size: 14px;
         color: gray;
       }
 
       h3 {
+        font-family: 'Poppins', sans-serif; 
         font-size: 22px;
         font-weight: bold;
       }
@@ -44,10 +47,20 @@
   }
 
   .chart-container {
-    width: 80%;
-    max-width: 700px;
-    margin: 20px auto;
+    width: 50%;
+    max-width: 600px;
+    height: 400px;
+    margin-top: 20px;
   }
+
+  ngx-charts-line-chart {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+  }
+  
 
   button {
     background-color: #0085C7;
@@ -57,5 +70,27 @@
     border-radius: 5px;
     cursor: pointer;
     margin-top: 20px;
+    font-size: 16px;
+    transition: background 0.3s;
+  }
+
+  button:hover {
+    background-color: #0066a5;
+  }
+
+  @media (max-width: 768px) {
+    .stats-container {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .chart-container {
+      width: 100%;
+      padding: 0 10px;
+    }
+
+    ngx-charts-line-chart {
+      width: 100%;
+    }
   }
 }
