@@ -26,7 +26,7 @@ cd OlympicGamesDashboard
 
 2️⃣ Installer les dépendances
 
-npm install (or npm install -legacy-peer-deps)
+npm install (or npm install --legacy-peer-deps)
 
 3️⃣ Lancer l’application en local
 
