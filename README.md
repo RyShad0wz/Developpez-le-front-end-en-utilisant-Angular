@@ -1,29 +1,54 @@
-# OlympicGamesStarter
+Projet 2 - Tableau de bord des jeux olympiques
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.3.
+Ce projet est une application Angular permettant d’afficher et d’analyser les performances des pays ayant participé aux Jeux Olympiques.
 
-Don't forget to install your node_modules before starting (`npm install`).
+# Fonctionnalités principales
 
-## Development server
+✔ Dashboard principal :
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+    Affiche le nombre total de JO organisés
+    Indique le nombre de pays participants
+    Représente la répartition des médailles par pays sous forme de Pie Chart (ngx-charts)
+    Permet de cliquer sur un pays pour voir ses détails
 
-## Build
+✔ Page de détails d’un pays :
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+    Affiche le nom du pays
+    Indique le nombre total de participations, de médailles et d’athlètes
+    Présente l’évolution du nombre de médailles au fil des années sous forme de Line Chart (ngx-charts)
+    Permet de retourner au dashboard en un clic
 
-## Where to start
+# Installation et démarrage
+1️⃣ Cloner le projet
 
-As you can see, an architecture has already been defined for the project. It is just a suggestion, you can choose to use your own. The predefined architecture includes (in addition to the default angular architecture) the following:
+git clone https://github.com/ton-utilisateur/OlympicGamesDashboard.git
+cd OlympicGamesDashboard
 
-- `components` folder: contains every reusable components
-- `pages` folder: contains components used for routing
-- `core` folder: contains the business logic (`services` and `models` folders)
+2️⃣ Installer les dépendances
 
-I suggest you to start by understanding this starter code. Pay an extra attention to the `app-routing.module.ts` and the `olympic.service.ts`.
+npm install
 
-Once mastered, you should continue by creating the typescript interfaces inside the `models` folder. As you can see I already created two files corresponding to the data included inside the `olympic.json`. With your interfaces, improve the code by replacing every `any` by the corresponding interface.
+3️⃣ Lancer l’application en local
 
-You're now ready to implement the requested features.
+ng serve
 
-Good luck!
+🔹 Accéder à l’application via http://localhost:4200/
+
+# Build du projet
+
+Pour générer une version prête pour la production, exécute :
+
+ng build
+
+Les fichiers seront stockés dans le dossier dist/
+
+📂 assets/mock/olympic.json → Données des JO utilisées par l’application
+
+# Technologies utilisées
+
+    Angular 18
+    TypeScript
+    ngx-charts pour les graphiques dynamiques
+    SCSS pour le style et la responsivité
+
+Auteur : Allan Bouhadjar

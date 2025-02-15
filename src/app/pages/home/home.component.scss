@@ -4,8 +4,16 @@
   align-items: center;
   text-align: center;
   padding: 20px;
-  background: linear-gradient(to right, #f5f5f5, #e6e6e6);
+  background: linear-gradient(to right, #b0aaaa, #b9b5b5);
 }
+
+.chart-title {
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  margin: 20px 0;
+}
+
 
 .dashboard-container h1 {
   font-size: 28px;
@@ -43,17 +51,22 @@
 
 .chart-container {
   display: flex;
+  justify-content: center;
   flex-direction: column;
   align-items: center;
   width: 100%;
+  height: auto;
   max-width: 700px;
-  margin: 20px auto;
+  margin: 0px auto;
   text-align: center;
+  padding: 20px;
 }
 
 ngx-charts-pie-chart {
   width: 100%;
   height: auto;
+  max-width: 90vw; 
+  min-width: 250px; 
 }
 
 .chart-legend {
@@ -78,6 +91,36 @@ ngx-charts-pie-chart {
   border-radius: 50%;
 }
 
+@media (max-width: 1024px) {
+  .chart-container {
+    max-width: 90%;
+    padding: 0 10px;
+  }
+
+  ngx-charts-pie-chart {
+    width: 90%;
+    height: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .chart-container {
+    max-width: 100%;
+    padding: 0 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  ngx-charts-pie-chart {
+    width: 100%;
+    height: auto;
+  }
+
+  .chart-title {
+    font-size: 18px;
+  }
+}
+
 @media (max-width: 768px) {
   .stats-container {
     flex-direction: column;
@@ -88,12 +131,26 @@ ngx-charts-pie-chart {
     width: 80%;
   }
 
-  .chart-container {
+  ngx-charts-pie-chart {
     width: 90%;
+    height: auto;
+  }
+
+  .chart-container {
+   max-width: 90%;
+   padding: 0 10px;
   }
 
   .chart-legend {
     flex-direction: column;
     align-items: center;
   }
+
+  .chart-title {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    margin: 20px 0;
+  }
+  
 }

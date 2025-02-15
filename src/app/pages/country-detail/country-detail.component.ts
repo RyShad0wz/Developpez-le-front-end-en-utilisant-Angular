@@ -16,10 +16,10 @@ export class CountryDetailComponent implements OnInit {
 
   // Données pour ngx-charts
   lineChartData: any[] = [];
-  view: [number, number] = [600, 400]; 
+  view: [number, number] = [450, 400]; 
 
   // Options ngx-charts
-  showLegend = true;
+  showLegend = false;
   showLabels = true;
   showXAxis = true;
   showYAxis = true;
