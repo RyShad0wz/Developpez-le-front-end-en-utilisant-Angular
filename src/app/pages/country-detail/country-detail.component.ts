@@ -18,7 +18,7 @@ export class CountryDetailComponent implements OnInit, OnDestroy {
 
   // Données pour ngx-charts
   lineChartData: { name: string; series: { name: string; value: number }[] }[] = [];
-  view: [number, number] = [450, 400];
+  view: [number, number] = [window.innerWidth > 768 ? 700 : 350, 400];
 
   // Options ngx-charts
   showLegend = false;
@@ -36,6 +36,7 @@ export class CountryDetailComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
+    window.addEventListener('resize', this.updateViewSize);
     const countryId: number = Number(this.route.snapshot.paramMap.get('id'));
 
     this.subscriptions.add(
@@ -55,6 +56,7 @@ export class CountryDetailComponent implements OnInit, OnDestroy {
 
   // Se désabonner proprement pour éviter les fuites mémoire
   ngOnDestroy(): void {
+    window.removeEventListener('resize', this.updateViewSize);
     this.subscriptions.unsubscribe();
   }
 
@@ -89,7 +91,12 @@ export class CountryDetailComponent implements OnInit, OnDestroy {
     ];
   }
 
+  updateViewSize = () => {
+    this.view = [window.innerWidth > 768 ? 700 : 350, 400];
+  };
+  
   goBack(): void {
     this.router.navigate(['/']);
   }
+  
 }
