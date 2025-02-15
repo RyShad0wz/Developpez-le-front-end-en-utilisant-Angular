@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit {
   totalJOs: number = 0;
   totalCountries: number = 0;
   pieChartData: any[] = [];
-  view: [number, number] = [700, 400]; // ✅ Taille du graphique
+  view: [number, number] = [600, 400]; // ✅ Taille du graphique
 
   // Options ngx-charts
   showLegend: boolean = true;
