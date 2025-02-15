@@ -16,7 +16,7 @@ export class CountryDetailComponent implements OnInit {
 
   // Données pour ngx-charts
   lineChartData: any[] = [];
-  view: [number, number] = [600, 400]; // Taille du graphique
+  view: [number, number] = [600, 400]; 
 
   // Options ngx-charts
   showLegend = true;
@@ -56,7 +56,7 @@ export class CountryDetailComponent implements OnInit {
     });
   }
 
-  // Préparer les données pour ngx-charts
+  // Prépare les données pour ngx-charts
   prepareLineChartData(): void {
     if (!this.countryData) return;
 
