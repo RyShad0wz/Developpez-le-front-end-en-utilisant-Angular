@@ -14,7 +14,7 @@ const routes: Routes = [
     component: CountryDetailComponent,
   },
   {
-    path: '**', // wildcard
+    path: '**', 
     component: NotFoundComponent,
   },
 ];

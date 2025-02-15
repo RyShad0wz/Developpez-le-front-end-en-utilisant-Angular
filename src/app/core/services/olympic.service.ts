@@ -53,7 +53,7 @@ export class OlympicService {
 
   /*
   loadInitialDataFromAPI(): Observable<any[]> {
-    return this.http.get<any[]>(this.apiUrl).pipe(
+    return this.http.get<OlympicsCountry[]>(this.apiUrl).pipe(
       tap((data) => {
         console.log('📡 Données chargées depuis l’API:', data);
         this.olympics$.next(data);
