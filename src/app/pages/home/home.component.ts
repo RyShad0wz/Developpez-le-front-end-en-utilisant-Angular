@@ -82,16 +82,19 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
   }
 
-  // ✅ Mise à jour de la taille du graphique en fonction de la taille de l'écran
   @HostListener('window:resize', [])
   updateChartSize(): void {
     const width = window.innerWidth;
-    if (width > 1200) {
-      this.view = [600, 500]; // Taille grand écran
+    const height = window.innerHeight;
+  
+    if (width > 1400) {
+      this.view = [700, height * 0.5]; // Écran large
+    } else if (width > 1024) {
+      this.view = [600, height * 0.5]; // Grand écran
     } else if (width > 768) {
-      this.view = [500, 400]; // Tablette
+      this.view = [500, height * 0.5]; // Tablette
     } else {
-      this.view = [500, 400]; // Mobile
+      this.view = [350, height * 0.45]; // Mobile
     }
   }
-}
+}  
